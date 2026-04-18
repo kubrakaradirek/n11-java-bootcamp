@@ -1,66 +1,46 @@
-💳 Payment System (SOLID)
+## ⚙️ Single Responsibility Principle (SRP)
 
-📌 Overview
+Each class has one clear responsibility:
 
-This project is a scalable payment processing system developed for the n11 TalentHub Backend Bootcamp. The core focus is to implement SOLID principles, ensuring the system remains extendable without modifying existing code.
+| Class | Responsibility |
+|------|----------------|
+| `PaymentProcessor` | Manages payment flow, validation, logging, execution |
+| `Payment Methods` | Contains transaction logic for each payment type |
+| `ConsoleLogger` | Prints logs to the console |
 
-🚀 Key Features
+---
 
-✅ Strategy Pattern: Each payment method is implemented as a separate class through the IPaymentMethod interface.
+## ⚙️ Dependency Inversion Principle (DIP)
 
-✅ Centralized Logging: Integrated ILogger interface to track and record all system processes.
+`PaymentProcessor` depends on abstractions instead of concrete classes:
 
-✅ Robustness: Implementation of resilient validation loops using try-catch blocks to handle InputMismatchException (invalid characters) and logical errors (negative amounts).
+- `IPaymentMethod`
+- `ILogger`
 
-🧠 Design Approach
+This allows flexible replacement of logging systems or payment providers.
 
-⚙️ Open/Closed Principle (OCP)
+---
 
-The system is open for extension but closed for modification. Adding a new payment method only requires adding it to the list in Test.java without touching the core logic.
+## 🏗️ Project Structure
 
-// Adding a new method is as simple as:
-availableMethods.add(new ApplePayPayment());
-
-
-⚙️ Single Responsibility Principle (SRP)
-
-Every class has a unique responsibility:
-
-PaymentProcessor: Manages the payment flow (logging, validation, and execution).
-
-PaymentMethod Implementations: Handles specific transaction logic for each method.
-
-ConsoleLogger: Responsible only for printing logs to the console.
-
-⚙️ Dependency Inversion Principle (DIP)
-
-PaymentProcessor depends on abstractions (IPaymentMethod, ILogger) rather than concrete implementations, allowing for easy swapping of logging or payment components.
-
-🏗️ Project Structure
-
+```bash
 n11-java-bootcamp
-├── .idea/
 ├── src/
 │   └── n11.bootcamp.homework01
-│               ├── log/
-│               │   ├── ConsoleLogger.java
-│               │   └── ILogger.java
-│               ├── payment/
-│               │   ├── ApplePayPayment.java
-│               │   ├── CreditCardPayment.java
-│               │   ├── CryptoPayment.java
-│               │   └── IPaymentMethod.java
-│               ├── service/
-│               │   └── PaymentProcessor.java
-│               └── Test.java
-├── n11-talenthub-backend-bootcamp-homework-01.iml
+│       ├── log/
+│       │   ├── ConsoleLogger.java
+│       │   └── ILogger.java
+│       ├── payment/
+│       │   ├── ApplePayPayment.java
+│       │   ├── CreditCardPayment.java
+│       │   ├── CryptoPayment.java
+│       │   └── IPaymentMethod.java
+│       ├── service/
+│       │   └── PaymentProcessor.java
+│       └── Test.java
 └── README.md
-
-
 ▶️ Example Output
-
 ✅ Successful Transaction
-
 === Payment Infrastructure ===
 1. Credit Card
 2. Crypto (USDT)
@@ -73,10 +53,7 @@ Enter payment amount (TL): 100
 [SYSTEM LOG] : Starting payment process with Credit Card...
 💳 Transaction of 100.0 TL completed successfully via Credit Card.
 [SYSTEM LOG] : Transaction completed successfully.
-
-
 ❌ Error Handling Scenarios
-
 Please select a payment method (1-3): 4
 ❌ Error: Please select only from the numbers (1-3) provided in the list!
 
@@ -85,8 +62,13 @@ Enter payment amount (TL): -100
 
 Enter payment amount (TL): abc
 ❌ Error: You can only enter numeric values for the amount!
-
-
+🛠️ Technologies Used
+Java
+OOP
+SOLID Principles
+Strategy Pattern
+Exception Handling
+Console Application
 👩🏽‍💻 Author
 
 Kubra Karadirek
