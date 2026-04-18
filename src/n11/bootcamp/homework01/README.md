@@ -88,6 +88,6 @@ The following sequence shows a typical successful payment flow:
 * **OOP Principles**
 ---
 ## 👩🏽‍💻 Author
-**Kubra Karadirek**
---
+Kubra Karadirek
+
 *Developed for n11 TalentHub Backend Bootcamp - 2026*
