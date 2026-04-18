@@ -1,3 +1,38 @@
+# 💳 Payment System (SOLID)
+
+## 📌 Overview
+
+This project is a **scalable payment processing system** developed for the **n11 TalentHub Backend Bootcamp**.  
+The main goal of the project is to apply **SOLID principles** and create a system that is **easy to maintain, extend, and improve** without changing existing core code.
+
+---
+
+## 🚀 Key Features
+
+### ✅ Strategy Pattern
+Each payment method is implemented as a separate class through the `IPaymentMethod` interface.
+
+### ✅ Centralized Logging
+A dedicated `ILogger` interface is used to track and record all important system operations.
+
+### ✅ Robust Error Handling
+The application uses `try-catch` blocks and validation loops to handle:
+
+- `InputMismatchException` (invalid character input)
+- Logical errors (negative or zero amount)
+- Invalid menu selections
+
+---
+
+## 🧠 Design Approach
+
+# ⚙️ Open/Closed Principle (OCP)
+
+The system is **open for extension** but **closed for modification**.  
+To add a new payment method, simply create a new class and register it in the list.
+
+```java
+availableMethods.add(new ApplePayPayment());
 ## ⚙️ Single Responsibility Principle (SRP)
 
 Each class has one clear responsibility:
